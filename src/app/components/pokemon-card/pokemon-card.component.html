@@ -1,6 +1,6 @@
 <section class ="pokemon">
     <img class="pokemon-sprite" [src]="pokemon.sprites?.front_default" crossorigin>
     <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-    <p class="pokemon-pecu">{{ pokemon.weight }}, {{ pokemon.height }}</p>
-    <!-- manca routerlink -->
+    <p class="pokemon-pecu">peso: {{ pokemon.weight }}, altezza: {{ pokemon.height }}</p>
+    <a [routerLink]="['pokemon/', pokemon.id]">Dettagli</a>
 </section>

@@ -10,6 +10,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './pokemon-card.component.html',
   styleUrl: './pokemon-card.component.scss'
 })
-export class PokemonCardComponent {
+export   class PokemonCardComponent {
   @Input() pokemon!: PokemonModel;
 }

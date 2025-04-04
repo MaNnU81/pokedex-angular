@@ -2,7 +2,7 @@ export interface PokemonModel {
     // abilities: Ability[]
     base_experience: number
     height: number
-    id: number
+    id: string
     name: string
     sprites: Sprites
     types: Type[]
