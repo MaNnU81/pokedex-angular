@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 export class HomepageComponent {
   pokemons: PokemonModel[] = [];
   pokemonService: PokemonService = inject(PokemonService) // maiuscole DECORATOR minuscole FUNZIONI
-pokemon: any;
+  pokemon: any;
 
   constructor() {
     this.pokemonService.getPokemonData().then(pok => {
@@ -23,4 +23,25 @@ pokemon: any;
     })
   }
 
+  get isFirstPage(): boolean {
+    return this.pokemonService.offset === 0;
+  }
+
+  get currentPage(): number {
+    return this.pokemonService.offset / this.pokemonService.limit + 1;
+  }
+
+  nextPage() {
+    this.pokemonService.nextPage();
+    this.pokemonService.getPokemonData().then(pok => {
+      this.pokemons = pok;
+    });
+  }
+  
+  previousPage() {
+    this.pokemonService.previousPage();
+    this.pokemonService.getPokemonData().then(pok => {
+      this.pokemons = pok;
+    });
+  }
 }

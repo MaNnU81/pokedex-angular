@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 
 
 export const routes: Routes = [
-    { path: '', component: HomepageComponent},
-    {path: 'pokemon/id', component: PokemonDetailComponent }
+    { path: '', component: HomepageComponent, title: 'Home page'},
+    {path: 'pokemon/:id', component: PokemonDetailComponent, title: 'Detail' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

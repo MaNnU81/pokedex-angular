@@ -1,3 +1,10 @@
+<div class="pagination-buttons">
+    <p>Pagina: {{ currentPage }}</p>
+    <button [disabled]="isFirstPage" (click)="previousPage()">Precedente</button>
+    <button (click)="nextPage()">Successivo</button>
+  </div>
+
+
 <section class="results">
     <app-pokemon-card
         *ngFor="let pokemon of pokemons"
