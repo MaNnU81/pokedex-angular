@@ -1,14 +1,64 @@
-<div class="pagination-buttons">
-    <p>Pagina: {{ currentPage }}</p>
-    <button [disabled]="isFirstPage" (click)="previousPage()">Precedente</button>
-    <button (click)="nextPage()">Successivo</button>
+<div class="pokedex-container">
+    <!-- Riquadro sinistro - Visualizzatore -->
+    <div class="visualizer-panel">
+      <div class="pokemon-display">
+        <div class="info-box">
+            <span class="value" class="name-card">{{ (selectedPokemon?.name || "nome" | titlecase)}}</span>
+          </div>
+        <img [src]="selectedPokemon?.sprites?.front_default || 'assets/default-pokemon.png'" 
+             alt="{{ selectedPokemon?.name }}"
+             class="main-sprite">
+        
+        <div class="info-boxes">
+          <div class="info-box">
+            <span class="label">Peso</span>
+            <span class="value">{{ (selectedPokemon?.weight || 0) / 10 }} kg</span>
+          </div>
+          <div class="info-box">
+            <span class="label">Altezza</span>
+            <span class="value">{{ (selectedPokemon?.height || 0) / 10 }} m</span>
+          </div>
+        </div>
+  
+        <div class="types-box">
+          <span *ngFor="let type of selectedPokemon?.types?.slice(0, 2)" 
+                [class]="'type-badge type-' + type.type.name">
+            {{ type.type.name | titlecase }}
+          </span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Riquadro destro - Lista -->
+    <div class="list-panel">
+      <div class="pokemon-list">
+        <div *ngFor="let pokemon of pokemons" 
+             class="list-item"
+             [class.selected]="pokemon.id === selectedPokemon?.id"
+             (click)="selectPokemon(pokemon)">
+          
+          <div class="item-content">
+            <img [src]="pokemon.sprites?.front_default" 
+                 alt="{{ pokemon.name }}"
+                 class="list-sprite">
+            
+            <div class="item-info">
+              <span class="pokemon-number">#{{ pokemon.id }}</span>
+              <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
+            </div>
+          </div>
+  
+          <a [routerLink]="['/pokemon', pokemon.id]" class="detail-button">
+            Dettagli
+          </a>
+        </div>
+      </div>
+  
+      <!-- Paginazione  -->
+      <div class="pagination-buttons">
+        <button (click)="previousPage()" [disabled]="isFirstPage">‹</button>
+        <span>Pagina {{ currentPage }}</span>
+        <button (click)="nextPage()">›</button>
+      </div>
+    </div>
   </div>
-
-
-<section class="pokemon-grid">
-    <app-pokemon-card
-        *ngFor="let pokemon of pokemons"
-        [pokemon]="pokemon">
-    </app-pokemon-card>
-</section>
-

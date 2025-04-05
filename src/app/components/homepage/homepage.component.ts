@@ -23,6 +23,12 @@ export class HomepageComponent {
     })
   }
 
+  selectedPokemon: PokemonModel | null = null;
+
+selectPokemon(pokemon: PokemonModel): void {
+  this.selectedPokemon = pokemon;
+}
+
   get isFirstPage(): boolean {
     return this.pokemonService.offset === 0;
   }

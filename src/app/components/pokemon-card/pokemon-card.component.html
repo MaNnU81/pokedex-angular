@@ -1,10 +1,15 @@
 <section class="pokemon">
     <div class="left-column">
         <img class="pokemon-sprite" [src]="pokemon.sprites?.front_default" crossorigin>
-        <p class="pokemon-pecu">Peso: {{ pokemon.weight }}, Altezza: {{ pokemon.height }}</p>
+        <!-- <p class="pokemon-pecu">Peso: {{ pokemon.types.o.type.name}}, Altezza: {{ pokemon.height }}</p> -->
+        <p class="pokemon-pecu">Tipi: 
+            <span *ngFor="let type of pokemon.types">
+              {{ type.type.name | titlecase }}
+            </span>
+          </p>
     </div>
     <div class="right-column">
-        <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-        <a [routerLink]="['pokemon/', pokemon.id]">Dettagli</a>
+        <h2 class="pokemon-name">{{ pokemon.name | titlecase }}</h2>
+        <a [routerLink]="['pokemon/', pokemon.id]"><img width="48" height="48" src="https://img.icons8.com/color/48/search-more.png" alt="search-more"/></a>
     </div>
 </section>
