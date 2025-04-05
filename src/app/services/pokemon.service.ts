@@ -15,7 +15,7 @@ export class PokemonService {
 
 
   constructor() {
-    this.limit = 20;
+    this.limit = 21;
     this.offset = 0;
   }
 

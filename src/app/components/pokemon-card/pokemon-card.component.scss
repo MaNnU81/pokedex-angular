@@ -1,0 +1,70 @@
+.pokemon {
+    border: solid 1px black;
+    background-color: aqua;
+    display: flex;
+    padding: 15px 25px;
+    height: 150px; /* Aumentata un po' per l'immagine più grande */
+    width: 450px; /* Larghezza adeguata */
+    border-radius: 75px; /* Metà dell'altezza per i bordi arrotondati */
+    box-sizing: border-box;
+    gap: 20px;
+    align-items: center;
+    position: relative; /* Per posizionamento assoluto dell'immagine */
+    overflow: hidden; /* Nasconde le parti dell'immagine che escono */
+    -webkit-box-shadow: 10px 7px 21px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 7px 21px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 7px 21px 0px rgba(0,0,0,0.75);
+}
+
+/* Immagine più grande che "esce" dal contenitore */
+.pokemon-sprite {
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
+    margin-left: -15px; /* Fa uscire l'immagine dal bordo sinistro */
+    z-index: 2; /* Porta in primo piano */
+    flex-shrink: 0; /* Impedisce il ridimensionamento */
+}
+
+/* Contenuto a destra */
+.pokemon-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+}
+
+/* Altri stili rimangono simili */
+.pokemon-name {
+    background-color: lightgray;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.pokemon-pecu {
+    background-color: lightyellow;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pokemon a {
+    display: block;
+    padding: 6px 12px;
+    text-align: center;
+    background-color: lightgreen;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 14px;
+}
