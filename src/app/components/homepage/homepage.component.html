@@ -12,11 +12,11 @@
         <div class="info-boxes">
           <div class="info-box">
             <span class="label">Peso</span>
-            <span class="value">{{ (selectedPokemon?.weight || 0) / 10 }} kg</span>
+            <span class="value">{{ (selectedPokemon?.weight || 0) / 10 }} Kg.</span>
           </div>
           <div class="info-box">
             <span class="label">Altezza</span>
-            <span class="value">{{ (selectedPokemon?.height || 0) / 10 }} m</span>
+            <span class="value">{{ (selectedPokemon?.height || 0) / 10}} m.</span>
           </div>
         </div>
   
@@ -26,7 +26,17 @@
             {{ type.type.name | titlecase }}
           </span>
         </div>
-      </div>
+       
+
+       <!-- risolve problema del button vuoto quando non c'è pokemon selezionato -->
+
+        <a *ngIf="selectedPokemon" [routerLink]="['/pokemon', selectedPokemon.id]" class="detail-button">
+            <img src="/pokeicona-Photoroom.png" alt="Dettagli" class="detail-icon">
+      </a>
+      <button *ngIf="!selectedPokemon" class="detail-button" disabled>
+        <img src="/pokeicona-Photoroom.png" alt="Dettagli" class="detail-icon">
+      </button>
+    </div>
     </div>
   
     <!-- Riquadro destro - Lista -->
@@ -43,14 +53,12 @@
                  class="list-sprite">
             
             <div class="item-info">
-              <span class="pokemon-number">#{{ pokemon.id }}</span>
+              <span class="pokemon-number">Id.{{ pokemon.id }}</span>
               <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
             </div>
           </div>
   
-          <a [routerLink]="['/pokemon', pokemon.id]" class="detail-button">
-            Dettagli
-          </a>
+        
         </div>
       </div>
   
@@ -61,4 +69,4 @@
         <button (click)="nextPage()">›</button>
       </div>
     </div>
-  </div>
+</div>
